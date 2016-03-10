@@ -1,7 +1,6 @@
 package myTools;
 
 import android.app.Activity;
-import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +14,7 @@ public class MyToolS {
 
     private static final String TAG = "MyToolS";
     static double currentTime, oldTime = 0;
+
     public static String getTime() {
 
         currentTime = System.currentTimeMillis();

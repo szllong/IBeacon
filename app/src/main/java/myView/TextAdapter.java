@@ -8,9 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.List;
+
 import cqhh.ibeacon.R;
 import myModel.ListData;
-import java.util.List;
 
 /**
  * Created by cooper on 2016.3.7.

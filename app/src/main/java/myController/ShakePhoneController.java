@@ -28,7 +28,7 @@ public class ShakePhoneController implements SensorEventListener {
     private float lastZ;
 
     // 构造器
-    public ShakePhoneController(Context context){
+    public ShakePhoneController(Context context) {
         mContext = context;
         // 获得传感器管理器
         sensorManager = (SensorManager) mContext
@@ -42,7 +42,7 @@ public class ShakePhoneController implements SensorEventListener {
     /**
      * 开始检测
      */
-    public void start(){
+    public void start() {
 
         // 注册
         if (sensor != null) {
@@ -54,10 +54,10 @@ public class ShakePhoneController implements SensorEventListener {
     /**
      * 停止检测
      */
-    public void stop(){
-        if (sensorManager != null){
+    public void stop() {
+        if (sensorManager != null) {
             sensorManager.unregisterListener(this);
-        }else {
+        } else {
             Log.i(TAG, "bug sensorManager is null");
         }
 
@@ -73,15 +73,12 @@ public class ShakePhoneController implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
 
 
-
         int sensorType = event.sensor.getType();
         //values[0]:X轴，values[1]：Y轴，values[2]：Z轴
         float[] values = event.values;
-        if (sensorType == Sensor.TYPE_ACCELEROMETER)
-        {
+        if (sensorType == Sensor.TYPE_ACCELEROMETER) {
             if ((Math.abs(values[0]) > 17 || Math.abs(values[1]) > 17 || Math
-                    .abs(values[2]) > 17))
-            {
+                    .abs(values[2]) > 17)) {
                 onShakeListener.onShake();
 //                Log.i("sensor x ", "============ values[0] = " + values[0]);
 //                Log.i("sensor y ", "============ values[1] = " + values[1]);
