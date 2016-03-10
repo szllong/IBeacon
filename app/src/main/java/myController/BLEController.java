@@ -33,8 +33,8 @@ public class BLEController extends Service {
 
     private Handler mHandler;
     //开始停止扫描时间间隔
-    private static final int StopScanInterval = 5000;
-
+    private static final int StopScanInterval = 2000;
+    private boolean isScaning = false;
     private Activity activity;
 
     public BLEController(Activity ac) {
@@ -74,6 +74,8 @@ public class BLEController extends Service {
      * 开始搜索
      */
     public void startLeScan() {
+        if (isScaning)
+            return;
         // 现在检测时间
         long currentUpdateTime = System.currentTimeMillis();
         // 两次检测的时间间隔
@@ -90,10 +92,12 @@ public class BLEController extends Service {
             }
         }, StopScanInterval);
         mBluetoothAdapter.startLeScan(mLeScanCallback);
+        isScaning = true;
     }
 
     public void stopLeScan() {
         mBluetoothAdapter.stopLeScan(mLeScanCallback);
+        isScaning = false;
     }
 
     private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
@@ -107,6 +111,7 @@ public class BLEController extends Service {
                 @Override
                 public void run() {
                     if (mDeviceEventListener != null) {
+                        Log.i(TAG, "in class mLeScanCallback");
                         mDeviceEventListener.notifyDeviceFound(device);
                     }
                 }

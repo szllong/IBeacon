@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Http
     public void notifyDeviceFound(BluetoothDevice bluetoothDevice) {
         //contentStr = sendText.getText().toString();
         //将发送的字符转变为蓝牙地址
-        //Log.i(TAG, "in function notifyDeviceFound");
+        Log.i(TAG, "in function notifyDeviceFound");
         String contentStr = "发现蓝牙设备的地址是" + bluetoothDevice.getAddress();
         //将发送的内容变成蓝牙地址
         String newstr = contentStr.replace(" ", "");
